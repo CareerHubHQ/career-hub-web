@@ -1,0 +1,12 @@
+@use "theme.funcs" as funcs;
+@use "theme.maps" as theme;
+
+@mixin generate-theme-variables() {
+  @each $theme-name, $theme-colors in theme.$themes {
+    &.#{$theme-name} {
+      @each $color-name, $color-value in $theme-colors {
+        --#{$color-name}: #{$color-value};
+      }
+    }
+  }
+}

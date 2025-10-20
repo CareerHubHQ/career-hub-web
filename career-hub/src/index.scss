@@ -1,0 +1,26 @@
+@use "styles/theme.mixins" as mixins;
+@use "styles/theme.maps" as theme;
+
+:root {
+  // // Default to light theme variables
+  // @each $color-name, $color-value in map-get(theme.$themes, 'light') {
+  //   --#{$color-name}: #{$color-value};
+  // }
+  
+  // Generate theme variables for both light and dark themes
+  @include mixins.generate-theme-variables();
+}
+
+// // Base styles
+// * {
+//   box-sizing: border-box;
+// }
+
+// body {
+//   background-color: var(--background);
+//   color: var(--text-primary);
+//   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+//   margin: 0;
+//   padding: 0;
+//   transition: background-color 0.2s ease, color 0.2s ease;
+// }
