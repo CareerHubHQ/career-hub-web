@@ -10,3 +10,8 @@
     }
   }
 }
+
+
+@mixin theme($property, $key, $variant: light, $inlineExtra:null, $postExtra:null){
+  $theme-values: map-get(theme.$themes, $variant);
+}
