@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import './button.style.scss';
+import PropTypes from "prop-types";
+import "./button.style.scss";
 
 const Button = ({className, variant="primary", size="medium", onClick, children, ...props }) => {
 
@@ -9,13 +9,13 @@ const Button = ({className, variant="primary", size="medium", onClick, children,
         <button className={buttonClass} onClick={onClick} {...props}>
             {children}
         </button>
-    )
+    );
 }
 
 
 Button.propTypes = {
     className: PropTypes.string,
-    variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
+    variant: PropTypes.oneOf(["primary", "secondary", "tertiary"]),
     onClick: PropTypes.func,
     children: PropTypes.node.isRequired
 }

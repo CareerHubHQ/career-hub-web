@@ -1,25 +1,24 @@
 
-import { useEffect } from 'react'
-import { Routes, Route } from 'react-router'
+import { useEffect } from "react"
+import { Routes, Route } from "react-router"
 
-
-import { SignUpPage } from './pages/sign-up/signup-page'
-import TestPage from './pages/test-components-page'
+import LoginPage from "./pages/login/LoginPage"
+import RegisterPage from "./pages/register/RegisterPage"
 
 function App() {
-  useEffect(() => {
-    const root = document.documentElement
-    root.classList.add("light")    
-  }, [])
+    useEffect(() => {
+        const root = document.documentElement
+        root.classList.add("light")    
+    }, [])
 
-  return (
-    <>
-      <Routes>
-        <Route path="/sign-up" element={<SignUpPage/>}/>
-        <Route path="/tests" element={<TestPage/>} />
-      </Routes>
-    </>
-  )
+    return (
+        <>
+            <Routes>
+                <Route path="/login" element={<LoginPage/>}/>
+                <Route path="/register" element={<RegisterPage/>}/>
+            </Routes>
+        </>
+    )
 }
 
 export default App
