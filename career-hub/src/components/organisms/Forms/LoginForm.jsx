@@ -4,24 +4,24 @@ import Form from "../../atoms/Form/form.atom";
 import FormField from "../../molecules/FormField/form-field";
 import Button from "../../atoms/Button/button.atom";
 
-const LoginForm = () => {
-    const [email, setEmail] = useState("");
+const LoginForm = ({ onSubmit }) => {
+    const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({ email, password });
+        await onSubmit({ username, password })
     };
 
     return (
         <Form className="login-form" onSubmit={handleSubmit}>
             <FormField
-                label="Email"
-                htmlFor="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+                label="Username"
+                htmlFor="username"
+                type="text"
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
+                placeholder="Enter your username"
                 required
             />
 
