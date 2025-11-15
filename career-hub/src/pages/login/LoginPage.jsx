@@ -1,16 +1,23 @@
 import { Link } from "react-router";
+import { useNavigate } from "react-router";
+
 import AuthTemplate from "../../components/templates/AuthTemplate/auth-template";
 import LoginForm from "../../components/organisms/Forms/LoginForm";
 
 import AuthService from "../../services/auth.services";
 
 const LoginPage = () => {
+    const navigate = useNavigate()
     const handleLogin = async (data) => {
         const { username, password } = data;
         const hashedPassword = password;
 
         try {
             const user = await AuthService.login(username, hashedPassword);
+
+            if (user) {
+                navigate("/dashboard")
+            }
             //TODO: Store the user data
         } catch (err) {
             console.error(err);
