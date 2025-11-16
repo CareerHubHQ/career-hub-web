@@ -15,7 +15,7 @@ const Button = ({className, variant="primary", size="medium", onClick, children,
 
 Button.propTypes = {
     className: PropTypes.string,
-    variant: PropTypes.oneOf(["primary", "secondary", "tertiary"]),
+    variant: PropTypes.oneOf(["primary", "secondary", "outline"]),
     onClick: PropTypes.func,
     children: PropTypes.node.isRequired
 }
