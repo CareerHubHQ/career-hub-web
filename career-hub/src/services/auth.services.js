@@ -1,4 +1,4 @@
-import ApiClient from "../utils/apit-client";
+import ApiClient from "../utils/api-client";
 
 const AuthService = {
     apiClient: new ApiClient("http://localhost:8000"),
