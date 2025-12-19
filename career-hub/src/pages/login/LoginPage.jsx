@@ -10,10 +10,8 @@ const LoginPage = () => {
     const navigate = useNavigate()
     const handleLogin = async (data) => {
         const { username, password } = data;
-        const hashedPassword = password;
-
         try {
-            const user = await AuthService.login(username, hashedPassword);
+            const user = await AuthService.login(username, password);
 
             if (user) {
                 navigate("/dashboard")
