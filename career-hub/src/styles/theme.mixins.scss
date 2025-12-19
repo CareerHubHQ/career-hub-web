@@ -1,17 +1,23 @@
 @use "theme.funcs" as funcs;
 @use "theme.maps" as theme;
 
+// Apply this to :root to generate global CSS variables for each theme
 @mixin generate-theme-variables() {
+  // This loops through each theme defined in the theme map
+  // and creates CSS variables for each color in that theme
+  // Example output:
+  // .light {
+  //   --bg-color-001: #F5F7FA;
+  //   --text-primary: #333333;
+  //   ...
+  // }  
   @each $theme-name, $theme-colors in theme.$themes {
+    // Theme name
     &.#{$theme-name} {
       @each $color-name, $color-value in $theme-colors {
+        // Define CSS variable
         --#{$color-name}: #{$color-value};
       }
     }
   }
-}
-
-
-@mixin theme($property, $key, $variant: light, $inlineExtra:null, $postExtra:null){
-  $theme-values: map-get(theme.$themes, $variant);
 }

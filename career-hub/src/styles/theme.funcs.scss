@@ -8,9 +8,9 @@
   @return false;
 }
 
-@function get-theme-value($key, $theme, $variant: light) {
+@function get-theme-value($key,  $variant: light) {
   $theme-values: map-get(theme.$themes, $variant);
-  @return map-get(map-get($theme-values, $key), $theme);
+  @return map-get($theme-values, $key);
 }
 
 
