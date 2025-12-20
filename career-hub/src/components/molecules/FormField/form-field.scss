@@ -1,0 +1,38 @@
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+
+    .input-subtext {
+        font-size: 0.75rem;
+        line-height: 1.4;
+        min-height: 1.05rem; // Prevents layout shift
+        margin-top: -0.25rem;
+        transition: color 0.2s ease-in-out;
+        color: var(--text-secondary); // Default color
+    }
+
+    // When there's an error, add red border to input
+    &.has-error {
+        .input-subtext {
+            color: var(--error-color);
+        }
+
+        input {
+            border-color: var(--error-color);
+
+            &:focus {
+                border-color: var(--error-color);
+                box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+            }
+        }
+    }
+
+    // Dark theme adjustments
+    :global(.dark) &.has-error {
+        input:focus {
+            box-shadow: 0 0 0 3px rgba(239, 83, 80, 0.15);
+        }
+    }
+}

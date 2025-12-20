@@ -12,6 +12,11 @@ $themes: (
     primary-color: #0D47A1,      // Deep, professional blue
     accent-color: #2E7D32,       // Strong green for key CTAs
 
+    // Status Colors
+    error-color: #D32F2F,        // Red for errors
+    success-color: #2E7D32,      // Green for success
+    warning-color: #F57C00,      // Orange for warnings
+
     // Borders & Dividers
     border-color: #E0E0E0        // Light gray for separating elements
   ),
@@ -27,6 +32,11 @@ $themes: (
     // Brand & Interactive Colors
     primary-color: #42A5F5,      // Brighter blue for visibility on a dark background
     accent-color: #66BB6A,       // Lighter, more luminous green for CTAs
+
+    // Status Colors
+    error-color: #EF5350,        // Lighter red for dark backgrounds
+    success-color: #66BB6A,      // Lighter green for success
+    warning-color: #FFA726,      // Lighter orange for warnings
 
     // Borders & Dividers
     border-color: #4B5563         // Muted gray for subtle separation
