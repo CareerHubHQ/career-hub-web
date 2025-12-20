@@ -13,8 +13,9 @@ import {
  * @deprecated Use validatePasswordWithError for detailed error messages
  */
 export const validatePassword = (password) => {
-    const re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
-    return re.test(String(password));
+    // Delegate to Zod schema for consistency
+    const result = passwordSchema.safeParse(password);
+    return result.success;
 };
 
 /**

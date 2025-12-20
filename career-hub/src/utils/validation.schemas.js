@@ -10,7 +10,7 @@ export const loginSchema = z.object({
   password: z.string()
     .min(6, 'Password must be at least 6 characters')
     .regex(
-      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&_-]{6,}$/,
       'Password must contain at least one letter and one number'
     )
 });
@@ -30,7 +30,7 @@ export const registerSchema = z.object({
   password: z.string()
     .min(6, 'Password must be at least 6 characters')
     .regex(
-      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&_-]{6,}$/,
       'Password must contain at least one letter and one number'
     ),
   confirmPassword: z.string()
@@ -50,11 +50,13 @@ export const emailSchema = z.string()
 
 /**
  * Password validation schema
+ * Requires: min 6 characters, at least one letter, at least one number
+ * Allows: letters, numbers, and special characters for better security
  */
 export const passwordSchema = z.string()
   .min(6, 'Password must be at least 6 characters')
   .regex(
-    /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+    /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&_-]{6,}$/,
     'Password must contain at least one letter and one number'
   );
 
