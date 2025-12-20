@@ -3,18 +3,32 @@ import PropTypes from "prop-types";
 import Form from "../../atoms/Form/form.atom";
 import FormField from "../../molecules/FormField/form-field";
 import Button from "../../atoms/Button/button.atom";
+import { validateLoginForm } from "../../../utils/auth.utils";
 
 const LoginForm = ({ onSubmit }) => {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState({});
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await onSubmit({ username, password })
+        
+        // Validate form data
+        const validation = validateLoginForm({ username, password });
+        
+        if (!validation.isValid) {
+            setErrors(validation.errors);
+            return;
+        }
+        
+        // Clear errors and submit
+        setErrors({});
+        await onSubmit(validation.data);
     };
 
     return (
-        <Form className="login-form" onSubmit={handleSubmit}>
+        // noValidate disables HTML5 validation to use Zod validation instead
+        <Form className="login-form" onSubmit={handleSubmit} noValidate>
             <FormField
                 label="Username"
                 htmlFor="username"
@@ -22,6 +36,7 @@ const LoginForm = ({ onSubmit }) => {
                 value={username}
                 onChange={(e) => setUserName(e.target.value)}
                 placeholder="Enter your username"
+                error={errors.username}
                 required
             />
 
@@ -32,6 +47,7 @@ const LoginForm = ({ onSubmit }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
+                error={errors.password}
                 required
             />
 
