@@ -29,6 +29,7 @@ const RegisterForm = ({ onSubmit }) => {
     };
 
     return (
+        // noValidate disables HTML5 validation to use Zod validation instead
         <Form className="register-form" onSubmit={handleSubmit} noValidate>
             <FormField
                 label="Full Name"

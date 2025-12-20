@@ -27,6 +27,7 @@ const LoginForm = ({ onSubmit }) => {
     };
 
     return (
+        // noValidate disables HTML5 validation to use Zod validation instead
         <Form className="login-form" onSubmit={handleSubmit} noValidate>
             <FormField
                 label="Username"

@@ -1,5 +1,9 @@
 import { z } from 'zod';
 
+// Password regex pattern - requires at least one letter, one number, 
+// and allows special characters for better security
+const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&_-]{6,}$/;
+
 /**
  * Login form validation schema
  */
@@ -10,7 +14,7 @@ export const loginSchema = z.object({
   password: z.string()
     .min(6, 'Password must be at least 6 characters')
     .regex(
-      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&_-]{6,}$/,
+      PASSWORD_REGEX,
       'Password must contain at least one letter and one number'
     )
 });
@@ -30,7 +34,7 @@ export const registerSchema = z.object({
   password: z.string()
     .min(6, 'Password must be at least 6 characters')
     .regex(
-      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&_-]{6,}$/,
+      PASSWORD_REGEX,
       'Password must contain at least one letter and one number'
     ),
   confirmPassword: z.string()
@@ -56,7 +60,7 @@ export const emailSchema = z.string()
 export const passwordSchema = z.string()
   .min(6, 'Password must be at least 6 characters')
   .regex(
-    /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&_-]{6,}$/,
+    PASSWORD_REGEX,
     'Password must contain at least one letter and one number'
   );
 
