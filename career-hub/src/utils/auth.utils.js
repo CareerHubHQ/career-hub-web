@@ -72,7 +72,9 @@ export const validateLoginForm = (formData) => {
   const errors = {};
   if (result.error && result.error.issues) {
     result.error.issues.forEach(issue => {
-      errors[issue.path[0]] = issue.message;
+      // Handle cases where path might be undefined or nested
+      const fieldName = issue.path?.[0] || 'root';
+      errors[fieldName] = issue.message;
     });
   }
   
@@ -94,7 +96,9 @@ export const validateRegisterForm = (formData) => {
   const errors = {};
   if (result.error && result.error.issues) {
     result.error.issues.forEach(issue => {
-      errors[issue.path[0]] = issue.message;
+      // Handle cases where path might be undefined or nested
+      const fieldName = issue.path?.[0] || 'root';
+      errors[fieldName] = issue.message;
     });
   }
   

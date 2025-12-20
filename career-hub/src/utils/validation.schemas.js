@@ -1,8 +1,11 @@
 import { z } from 'zod';
 
 // Password regex pattern - requires at least one letter, one number, 
-// and allows special characters for better security
+// and allows special characters (@$!%*#?&_-) for better security
 const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&_-]{6,}$/;
+
+// Username regex pattern - allows letters, numbers, underscores, and hyphens
+const USERNAME_REGEX = /^[a-zA-Z0-9_-]+$/;
 
 /**
  * Login form validation schema
@@ -71,6 +74,6 @@ export const usernameSchema = z.string()
   .min(3, 'Username must be at least 3 characters')
   .max(20, 'Username must not exceed 20 characters')
   .regex(
-    /^[a-zA-Z0-9_-]+$/,
+    USERNAME_REGEX,
     'Username can only contain letters, numbers, underscores, and hyphens'
   );
