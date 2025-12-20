@@ -3,25 +3,33 @@ import PropTypes from "prop-types";
 import Form from "../../atoms/Form/form.atom";
 import FormField from "../../molecules/FormField/form-field";
 import Button from "../../atoms/Button/button.atom";
+import { validateRegisterForm } from "../../../utils/auth.utils";
 
-const RegisterForm = () => {
+const RegisterForm = ({ onSubmit }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [errors, setErrors] = useState({});
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (password !== confirmPassword) {
-            alert("Passwords do not match");
+        // Validate form data
+        const validation = validateRegisterForm({ name, email, password, confirmPassword });
+        
+        if (!validation.isValid) {
+            setErrors(validation.errors);
             return;
         }
-        console.log({ name, email, password });
+        
+        // Clear errors and submit
+        setErrors({});
+        onSubmit(validation.data);
     };
 
     return (
-        <Form className="register-form" onSubmit={handleSubmit}>
+        <Form className="register-form" onSubmit={handleSubmit} noValidate>
             <FormField
                 label="Full Name"
                 htmlFor="name"
@@ -29,6 +37,7 @@ const RegisterForm = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your full name"
+                error={errors.name}
                 required
             />
 
@@ -39,6 +48,7 @@ const RegisterForm = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
+                error={errors.email}
                 required
             />
 
@@ -49,6 +59,7 @@ const RegisterForm = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Create a password"
+                error={errors.password}
                 required
             />
 
@@ -59,6 +70,7 @@ const RegisterForm = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirm your password"
+                error={errors.confirmPassword}
                 required
             />
 
