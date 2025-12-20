@@ -1,0 +1,16 @@
+@use "theme.maps" as theme;
+
+@function theme-exists($key, $theme-name) {
+  @if map-has-key(theme.$themes, $theme-name) {
+    $theme-map: map-get(theme.$themes, $theme-name);
+    @return map-has-key($theme-map, $key);
+  }
+  @return false;
+}
+
+@function get-theme-value($key,  $variant: light) {
+  $theme-values: map-get(theme.$themes, $variant);
+  @return map-get($theme-values, $key);
+}
+
+
